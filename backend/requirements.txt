@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+pydantic
+langchain
+langchain-community
+llama-cpp-python
+sentence-transformers
+faiss-cpu

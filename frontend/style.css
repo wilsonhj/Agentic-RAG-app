@@ -1,0 +1,115 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #2a2a2a; /* Slightly lighter dark background for container */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.chat-box {
+    display: flex;
+    flex-direction: column;
+    height: 60vh; /* Fixed height for the chat area */
+    border: 1px solid #444; /* Darker border */
+    border-radius: 4px;
+    overflow: hidden; /* Hide scrollbars until needed */
+}
+
+.chat-history {
+    flex-grow: 1;
+    overflow-y: auto; /* Enable scrolling for history */
+    padding: 1rem;
+    background-color: #1e1e1e; /* Slightly different dark for history */
+}
+
+.chat-history p {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.user-message {
+    background-color: #005f5f; /* Dark cyan for user */
+    text-align: right;
+    margin-left: auto; /* Align user messages to the right */
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background-color: #3a3a3a; /* Dark gray for bot */
+    text-align: left;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.input-area {
+    display: flex;
+    padding: 1rem;
+    border-top: 1px solid #444;
+    background-color: #2a2a2a;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid #555;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+#user-input::placeholder {
+    color: #888;
+}
+
+#send-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#send-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Scrollbar styling for webkit browsers */
+.chat-history::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-history::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+.chat-history::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+    border: 2px solid #2a2a2a;
+}
