@@ -1,5 +1,8 @@
 venv/
 .env
-__py__cache
-node_modules
+__py__cache/
+node_modules/
 package-lock.json
+.vs/
+.vscode/
+
