@@ -5,24 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Software Consulting RAG Agent with AI-powered responses">
     <title>Software Consulting RAG Agent</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.min.css">
-    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.8.0/build/highlight.min.js"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Software Consulting RAG Agent</h1>
-        <div class="chat-box">
-            <div id="chat-history" class="chat-history">
-                <!-- Chat messages will appear here -->
-            </div>
-            <div class="input-area">
-                <input type="text" id="user-input" placeholder="Ask about software consulting...">
-                <button id="send-button">Send</button>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
+<body class="bg-gray-900 text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

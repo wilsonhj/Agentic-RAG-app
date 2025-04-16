@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
-import ReactMarkdown from 'react-markdown'
-import rehypeHighlight from 'rehype-highlight'
-import rehypeRaw from 'rehype-raw'
+import { ChatMessage } from './ChatMessage'
+// import ReactMarkdown from 'react-markdown'
+// import rehypeHighlight from 'rehype-highlight'
+// import rehypeRaw from 'rehype-raw'
 import 'highlight.js/styles/github-dark.css'
 import './App.css'
 
@@ -110,44 +111,15 @@ function App() {
           {/* Chat Messages */}
           <div className="h-[60vh] overflow-y-auto p-4 space-y-4">
             {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`${
-                  message.role === 'user' 
-                    ? 'ml-auto bg-blue-600' 
-                    : 'mr-auto bg-gray-700'
-                } max-w-[80%] rounded-lg overflow-hidden`}
-              >
-                <div className="p-4">
-                  {message.role === 'user' ? (
-                    <div className="text-white">{message.content}</div>
-                  ) : (
-                    <ReactMarkdown
-                      rehypePlugins={[rehypeHighlight, rehypeRaw]}
-                      className="markdown-body text-gray-100"
-                      components={{
-                        code({ node, inline, className, children, ...props }) {
-                          return (
-                            <code
-                              className={`${className} ${inline ? 'inline-code' : 'block-code'}`}
-                              {...props}
-                            >
-                              {children}
-                            </code>
-                          );
-                        },
-                      }}
-                    >
-                      {message.content}
-                    </ReactMarkdown>
-                  )}
-                </div>
-              </div>
+              <ChatMessage
+          key={index}
+          message={message}
+              />
             ))}
             <div ref={messagesEndRef} />
             {error && (
               <div className="bg-red-600 text-white p-4 rounded-lg">
-                Error: {error}
+          Error: {error}
               </div>
             )}
             {isLoading && (
