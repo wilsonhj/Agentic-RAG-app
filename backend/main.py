@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from enum import Enum
 import os
 from dotenv import load_dotenv
 import httpx
@@ -27,6 +28,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class ModelChoice(str, Enum):
+    sonar = "sonar"
+    sonar_reasoning = "sonar-reasoning"
+    r1 = "r1-1776"
+    sonar_deep_reseach = "sonar-deep-research"
 
 class QueryRequest(BaseModel):
     query: str
