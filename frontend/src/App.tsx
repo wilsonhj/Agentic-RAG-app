@@ -11,7 +11,8 @@ const MODELS = [
   { name: 'Sonar Reasoning', value: 'sonar-reasoning' },
   { name: 'Sonar Reseach', value: 'sonar-reseach' },
   { name: 'Sonar Pro', value: 'sonar-pro' },
-  { name: 'R1', value: 'r1-1776' }
+  { name: 'R1', value: 'r1-1776' },
+  { name: 'Gemini 2.5 Pro (Google)', value: 'gemini-2.5-pro-exp-03-25' }
 ];
 
 interface Message {
