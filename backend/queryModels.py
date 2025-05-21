@@ -4,6 +4,7 @@ import httpx
 import logging
 from google import genai
 from fastapi import HTTPException
+from openai import OpenAI
 
 load_dotenv()
 
@@ -15,7 +16,13 @@ PERPLEXITY_API_URL = "https://api.perplexity.ai/chat/completions"
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 client = genai.Client(api_key=GOOGLE_API_KEY)
 
+# OpenAI API config
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+openai_client = OpenAI(api_key=OPENAI_API_KEY)
+
 logger = logging.getLogger(__name__)
+
+content = "You are a A.I. Software Engineering Consultant with expert knowledge in software development, devops, software architecture, machine learning, AI."
 
 async def query_perplexity(query: str, model: str) -> str:
     headers = {
@@ -23,7 +30,7 @@ async def query_perplexity(query: str, model: str) -> str:
         "Content-Type": "application/json"
     }
     messages = [
-        {"role": "system", "content": "You are a helpful AI assistant specializing in software consulting."},
+        {"role": "system", "content": content},
         {"role": "user", "content": query}
     ]
     payload = {
@@ -63,8 +70,26 @@ def query_gemini(query: str, model: str = "gemini-2.5-pro-exp-03-25") -> str:
         print(f"Error querying Gemini: {e}")
         return "Error querying Gemini"
 
+async def query_openai(query: str, model: "gpt-4.1") -> str:
+    try:
+        response = await openai_client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": content},
+                {"role": "user", "content": query}
+            ],
+            temperature=0.7,
+            max_tokens=1000,
+        )
+        return response.choices[0].message.content
+    except Exception as e:
+        logger.error(f"Error in query_openai: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 async def query_model(query: str, model: str) -> str:
     if model == "gemini-2.5-pro-exp-03-25":
         return query_gemini(query, model)
+    elif model == "gpt-4.1":
+        return await query_openai(query, model)
     else:
         return await query_perplexity(query, model)

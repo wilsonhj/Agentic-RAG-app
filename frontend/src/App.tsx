@@ -12,7 +12,8 @@ const MODELS = [
   { name: 'Sonar Reseach', value: 'sonar-reseach' },
   { name: 'Sonar Pro', value: 'sonar-pro' },
   { name: 'R1', value: 'r1-1776' },
-  { name: 'Gemini 2.5 Pro (Google)', value: 'gemini-2.5-pro-exp-03-25' }
+  { name: 'Gemini 2.5 Pro (Google)', value: 'gemini-2.5-pro-exp-03-25' },
+  { name: 'GPT-4.1', value: "gpt-4.1" },
 ];
 
 interface Message {
@@ -81,24 +82,26 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">Software Consulting RAG Agent</h1>
+    <div className="min-h-screen bg-gray-900 text-white flex flex-col p-2 sm:p-4">
+      <div className="w-full max-w-2xl mx-auto flex flex-col flex-1">
+        <header className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0 mb-3 sm:mb-6">
+          <h1 className="text-lg sm:text-2xl font-bold text-center sm:text-left">
+            Software Consulting RAG Agent
+          </h1>
           <ModelSelector
             models={MODELS}
             selectedModel={selectedModel}
             setSelectedModel={setSelectedModel}
           />
-        </div>
-        <div className="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+        </header>
+        <div className="flex-1 flex flex-col bg-gray-800 rounded-lg shadow-lg overflow-hidden">
           <ChatWindow
             messages={messages}
             messagesEndRef={messagesEndRef}
             error={error}
             isLoading={isLoading}
           />
-          <div className="border-t border-gray-700 p-4">
+          <div className="border-t border-gray-700 p-2 sm:p-4">
             <InputForm
               input={input}
               setInput={setInput}
