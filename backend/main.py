@@ -26,7 +26,7 @@ class ModelChoice(str, Enum):
     sonar_reasoning = "sonar-reasoning"
     r1 = "r1-1776"
     sonar_deep_reseach = "sonar-deep-research"
-    gemini_2_5_pro_exp_03_25 = "gemini-2.5-pro-exp-03-25"
+    gemini_2_5_pro = "gemini-2.5-pro-preview-05-06"
     gpt_4o_mini = "gpt-4.1" # FIXME: change to gpt 4.1
 
 class QueryRequest(BaseModel):

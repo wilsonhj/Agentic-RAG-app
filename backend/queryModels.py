@@ -59,7 +59,7 @@ async def query_perplexity(query: str, model: str) -> str:
             logger.error(f"Error in query_perplexity: {str(e)}")
             raise HTTPException(status_code=500, detail=str(e))
 
-def query_gemini(query: str, model: str = "gemini-2.5-pro-exp-03-25") -> str:
+def query_gemini(query: str, model: str = "gemini-2.5-pro-preview-05-06") -> str:
     try:
         response = client.models.generate_content(
             model=model,
@@ -70,7 +70,7 @@ def query_gemini(query: str, model: str = "gemini-2.5-pro-exp-03-25") -> str:
         print(f"Error querying Gemini: {e}")
         return "Error querying Gemini"
 
-async def query_openai(query: str, model: "gpt-4.1") -> str:
+async def query_openai(query: str, model: str) -> str:
     try:
         response = await openai_client.chat.completions.create(
             model=model,
@@ -87,7 +87,7 @@ async def query_openai(query: str, model: "gpt-4.1") -> str:
         raise HTTPException(status_code=500, detail=str(e))
 
 async def query_model(query: str, model: str) -> str:
-    if model == "gemini-2.5-pro-exp-03-25":
+    if model == "gemini-2.5-pro-preview-05-06":
         return query_gemini(query, model)
     elif model == "gpt-4.1":
         return await query_openai(query, model)

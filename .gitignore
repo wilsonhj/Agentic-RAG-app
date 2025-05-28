@@ -1,6 +1,7 @@
 venv/
 .env
-__py__cache/
+__pycache__/
+*.pyc
 node_modules/
 package-lock.json
 .vs/
